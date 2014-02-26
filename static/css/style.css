@@ -1,0 +1,13 @@
+.winterblue{
+	background-color: #0D5DA9;
+	color: #FFFFFF;
+}
+.winterlogo{
+	height: auto;
+	width: 100%;
+}
+.small-winterlogo{
+	height: 50px;
+	width: auto;
+	vertical-align: text-top;
+}
