@@ -5,3 +5,8 @@ local_settings.py
 .idea/*
 wintercap/settings.py
 db.sqlite3
+static/css/bootstrap*
+static/fonts
+static/js/bootstrap*
+static/js/jquery*
+public/*
