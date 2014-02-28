@@ -12,7 +12,7 @@
 			<tbody>
 				<tr><td><img class="screenshot_realisation" src="{% static 'screenshots/2_blank_screenshot.png' %}" alt="{{ project.name }}"/></td></tr>
 				<tr><td><strong>{{ project.name }}</strong></td></tr>
-				<tr><td><em>{% autoescape off %}{{ project.desc }}{% endautoescape %}</em></td></tr>
+				<tr><td>{% autoescape off %}{{ project.desc }}{% endautoescape %}</td></tr>
 			</tbody>
 			<tfoot>
 			<tr><td></td></tr>
@@ -20,7 +20,6 @@
 
 		</table>
 	</div>
-	<div class="clearfix visible-sm"></div>
 	{% endfor %}
 </div>
 {% endfor %}
