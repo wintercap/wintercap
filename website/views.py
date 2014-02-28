@@ -1,7 +1,8 @@
+#-*- coding: utf-8 -*-
 """
 wintercap.fr website views
 """
-
+from __future__ import print_function, division, absolute_import, unicode_literals
 from collections import OrderedDict
 
 from django.shortcuts import render
