@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
-    {% load static %}
+{% load static %}
 <head>
     {% block head %}
-    <title>{{ page_title }} | wintercap.fr - Développement </title>
+    <title>{{ page_title }} | wintercap.fr</title>
     <meta charset="utf-8"/>
+    <!-- [if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <!-- Bootstrap -->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen"/>
+
     <link href="{% static 'css/website-style.css' %}" rel="stylesheet" media="screen"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

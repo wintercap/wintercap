@@ -4,8 +4,6 @@ Main stylesheet for www.wintercap.fr website
 */
 
 body{
-	background-color: #3B3F48;
-
 	background: #525C7D; /* Old browsers */
 	background: -moz-linear-gradient(top,  #525C7D 0%, #3b3f48 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#525C7D), color-stop(100%,#3b3f48)); /* Chrome,Safari4+ */
@@ -14,10 +12,6 @@ body{
 	background: -ms-linear-gradient(top,  #525C7D 0%,#3b3f48 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #525C7D 0%,#3b3f48 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#525C7D', endColorstr='#3b3f48',GradientType=0 ); /* IE6-9 */
-
-
-
-
 }
 
 #body-content{
@@ -124,4 +118,16 @@ footer p{
 }
 footer a{
 	color: white;
+}
+
+/**
+ * Page réalisations
+ */
+.realisation{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.screenshot_realisation{
+	max-width: 100%;
+	height: auto;
 }

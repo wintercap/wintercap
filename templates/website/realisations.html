@@ -1,0 +1,29 @@
+{% extends "website/base.html" %}
+{% load static %}
+{% block content %}
+
+<h1>Réalisations passées :</h1>
+{% for line in pjlines %}
+<div class="row">
+	{% for project in line %}
+	<div class="realisation col-xs-12 col-sm-6 col-md-3">
+		<table>
+			<thead><tr><th>Pour <a href="{{ project.client.url }}">{{ project.client.name }}</a></th></tr></thead>
+			<tbody>
+				<tr><td><img class="screenshot_realisation" src="{% static 'screenshots/2_blank_screenshot.png' %}" alt="{{ project.name }}"/></td></tr>
+				<tr><td><strong>{{ project.name }}</strong></td></tr>
+				<tr><td><em>{% autoescape off %}{{ project.desc }}{% endautoescape %}</em></td></tr>
+			</tbody>
+			<tfoot>
+			<tr><td></td></tr>
+			</tfoot>
+
+		</table>
+	</div>
+	<div class="clearfix visible-sm"></div>
+	{% endfor %}
+</div>
+{% endfor %}
+
+<br/>
+{% endblock %}
