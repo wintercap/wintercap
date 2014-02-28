@@ -1,0 +1,127 @@
+/*
+website-style.css
+Main stylesheet for www.wintercap.fr website
+*/
+
+body{
+	background-color: #3B3F48;
+
+	background: #525C7D; /* Old browsers */
+	background: -moz-linear-gradient(top,  #525C7D 0%, #3b3f48 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#525C7D), color-stop(100%,#3b3f48)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #525C7D 0%,#3b3f48 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #525C7D 0%,#3b3f48 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #525C7D 0%,#3b3f48 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #525C7D 0%,#3b3f48 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#525C7D', endColorstr='#3b3f48',GradientType=0 ); /* IE6-9 */
+
+
+
+
+}
+
+#body-content{
+	padding-top: 50px;
+}
+
+/* NAVBAR */
+.navbar-logo{
+	height: 50px;
+	width: auto;
+	margin-top: -15px;
+}
+
+.navbar-default {
+	background-color: #292c33;
+	border-color: #525C7D;
+}
+.navbar-default .navbar-brand {
+	color: #ededed;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+	color: #ffffff;
+}
+.navbar-default .navbar-text {
+	color: #ededed;
+}
+.navbar-default .navbar-nav > li > a {
+	color: #ededed;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+	color: #ffffff;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: #ffffff;
+	background-color: #525C7D;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	color: #ffffff;
+	background-color: #525C7D;
+}
+.navbar-default .navbar-toggle {
+	border-color: #525C7D;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+	background-color: #525C7D;
+}
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #ededed;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+	border-color: #ededed;
+}
+.navbar-default .navbar-link {
+	color: #ededed;
+}
+.navbar-default .navbar-link:hover {
+	color: #ffffff;
+}
+
+@media (max-width: 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+		color: #ededed;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color: #ffffff;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+		color: #ffffff;
+		background-color: #525C7D;
+	}
+}
+
+/* NAVBAR END */
+
+
+
+#main-content{
+	background-color: #EEE;
+	border-radius: 5px;
+}
+
+
+
+.winterlogo{
+	max-height: 150px;
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.jumbotron h3{
+    text-align: center;
+}
+
+footer{
+	margin-top: 20px;
+	padding-top: 20px;
+	background-color: #292C33;
+	border-top: #525C7D 1px solid;
+}
+footer p{
+	color: #BBB;
+}
+footer a{
+	color: white;
+}

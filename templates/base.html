@@ -3,15 +3,15 @@
     {% load static %}
 <head>
     {% block head %}
-    <title>{{ page_title }} - wintercap.fr</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page_title }} | wintercap.fr - Développement </title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
 
     <!-- Bootstrap -->
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen">
-    <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet" media="screen">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen"/>
+    <link href="{% static 'css/website-style.css' %}" rel="stylesheet" media="screen"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +29,7 @@
         {% endblock %}
     </header>
 
-    <nav>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         {% block navigation %}
         {% endblock %}
     </nav>
@@ -39,7 +39,7 @@
         {% endblock %}
     </div>
 
-    <section id="main-content">
+    <section id="main-content" class="container">
         <section id="message-zone">
             {% block message-zone %}
             {% endblock %}
@@ -48,7 +48,7 @@
         {% endblock %}
     </section>
 
-    <footer>
+    <footer class="container-fluid">
         {% block footer %}
         {% endblock %}
     </footer>
