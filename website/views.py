@@ -41,6 +41,11 @@ def home(request):
 def competences(request):
     page_title = 'Compétences'
     nav_pages = make_nav(page_title)
+    categories = Category.objects.all()
+    for cat in categories:
+        cat.skills = Skill.objects.filter(category=cat)
+        for skill in cat.skills:
+            skill.level = Skillset.objects.get(skill=skill, person__id=1).level
     return render(request, 'website/competences.html', locals())
 
 

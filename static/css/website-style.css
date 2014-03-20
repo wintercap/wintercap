@@ -2,7 +2,9 @@
 website-style.css
 Main stylesheet for www.wintercap.fr website
 */
-
+html{
+    background-color: #292C33;
+}
 body{
 	background: #525C7D; /* Old browsers */
 	background: -moz-linear-gradient(top,  #525C7D 0%, #3b3f48 100%); /* FF3.6+ */
@@ -90,10 +92,16 @@ body{
 
 
 #main-content{
-	background-color: #EEE;
+	background: #DADEE7; /* Old browsers */
+	background: -moz-linear-gradient(top,  #EEEEEE 0%, #DADEE7 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#EEEEEE), color-stop(100%,#DADEE7)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #EEEEEE 0%,#DADEE7 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #EEEEEE 0%,#DADEE7 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #EEEEEE 0%,#DADEE7 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #EEEEEE 0%,#DADEE7 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#525C7D', endColorstr='#3b3f48',GradientType=0 ); /* IE6-9 */
 	border-radius: 5px;
 }
-
 
 
 .winterlogo{
@@ -140,4 +148,14 @@ footer a{
 }
 .screenshot_realisation:hover{
     background-color: #525C7D;
+}
+
+
+/**
+ * Page compétences
+ */
+.skill:hover{
+    cursor: default;
+    background-color: #3E4350;
+    color: white;
 }
