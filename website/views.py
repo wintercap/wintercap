@@ -10,6 +10,7 @@ from django.shortcuts import render
 
 from website.models import *
 
+
 def make_nav(active_page):
     """
     This function builds the navbar as an ordered dict.
@@ -51,7 +52,7 @@ def realisations(request):
     for pj in projects:
         pjlist.append(pj)
         pj.sklist = UsedSkill.objects.filter(project=pj)
-    pjlines = [pjlist[x:x+4] for x in range(0, len(pjlist), 4)]
+    pjlines = [pjlist[x:x + 4] for x in range(0, len(pjlist), 4)]
     return render(request, 'website/realisations.html', locals())
 
 

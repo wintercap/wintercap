@@ -1,42 +1,45 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block navigation %}
-<!-- Barre de navigation -->
+    <!-- Barre de navigation -->
 
-<div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-            <img class="navbar-logo" src="{% static 'img/white_logo.png' %}" alt="wintercap"/>
-        </a>
-        <button type="button" class="navbar-toggle" data-toggle="collapse"
-                data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img class="navbar-logo" src="{% static 'img/white_logo.png' %}"
+                     alt="wintercap"/>
+            </a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav pull-right">
+                {% for page, view in nav_pages.items %}
+                    <li{% if page == page_title %} class="active"{% endif %}>
+                        <a href="{% url view %}">{{ page }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav pull-right">
-            {% for page, view in nav_pages.items %}
-            <li{% if page == page_title %} class="active"{% endif %}>
-                <a href="{% url view %}">{{ page }}</a>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-</div>
 {% endblock %}
 
 {% block jumbotron %}
-<div class="container">
-<h1>{{ page_title }}</h1>
-</div>
+    <div class="container">
+        <h1>{{ page_title }}</h1>
+    </div>
 {% endblock %}
 
 {% block footer %}
-<p>Ce site dynamique utilise <a href="https://www.djangoproject.com">django</a>, <a href="http://www.jquery.com">jQuery</a> et <a
-        href="http://getbootstrap.com">Bootstrap</a>.</p>
-<p>&copy; 2014 David Bonnet
-</p>
+    <p>Ce site dynamique utilise <a
+            href="https://www.djangoproject.com">django</a>, <a
+            href="http://www.jquery.com">jQuery</a> et <a
+            href="http://getbootstrap.com">Bootstrap</a>.</p>
+    <p>&copy; 2014 David Bonnet
+    </p>
 {% endblock %}

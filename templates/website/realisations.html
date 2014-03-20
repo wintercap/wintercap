@@ -6,7 +6,7 @@
             $('.hideme').hide();
             $(".realisation").mouseenter(function () {
                 $(this).find(".hideme").stop().slideDown(500);
-            }).mouseleave(function() {
+            }).mouseleave(function () {
                 $(this).find(".hideme").stop().slideUp(500);
             });
         });
@@ -23,14 +23,15 @@
                          src="/media/{{ project.image }}"
                          alt="{{ project.name }}"
                          title="Capture d'écran"/>
+
                     <div class="hideme">
                         Client :<strong><a
                             href="{{ project.client.url }}">{{ project.client.name }}</a></strong>
                     </div>
                     <div class="hideme">
-                        {% autoescape off %}<em>
+                        {% autoescape off %}
                             {{ project.description }}
-                            </em>{% endautoescape %}
+                        {% endautoescape %}
                     </div>
                     <div class="hideme">
                         {% for usedskill in project.sklist %}

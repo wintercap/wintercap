@@ -18,7 +18,7 @@ def get_image_path(instance, filename):
         folder = 'people'
     else:
         folder = 'misc'
-    server_filename = unicode(instance) + '_' + filename
+    server_filename = unicode(instance).replace(' ', '_') + '_' + filename
     return os.path.join('img', folder, server_filename)
 
 
