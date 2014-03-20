@@ -1,5 +1,13 @@
 {% extends "website/base.html" %}
+{% load static %}
+{% block jumbotron %}
+<div class="container">
+    <img src="{% static 'img/wintercap_logo.png' %}"
+         class="img-responsive winterlogo" alt="Wintercap"/>
 
+    <h3>Développement d'applications web / desktop / mobile</h3>
+</div>
+{% endblock %}
 {% block content %}
 
 <h2>Site en construction...</h2>

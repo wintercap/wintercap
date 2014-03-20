@@ -103,8 +103,15 @@ body{
 	margin-right: auto;
 }
 
+.jumbotron h1{
+    text-shadow: 1px 1px 1px gray;
+}
 .jumbotron h3{
     text-align: center;
+}
+.jumbotron{
+    background: url('/static/img/jumbobg.png');
+    border-bottom: #727C9D 2px solid;
 }
 
 footer{
@@ -130,4 +137,7 @@ footer a{
 .screenshot_realisation{
 	max-width: 100%;
 	height: auto;
+}
+.screenshot_realisation:hover{
+    background-color: #525C7D;
 }

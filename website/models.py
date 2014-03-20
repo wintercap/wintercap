@@ -10,13 +10,25 @@ from django.db import models
 
 
 def get_image_path(instance, filename):
-    server_filename = str(instance.id) + '_' + filename
-    return os.path.join('screenshots', server_filename)
+    if isinstance(instance, Client):
+        folder = 'clients'
+    elif isinstance(instance, Project):
+        folder = 'projects'
+    elif isinstance(instance, Person):
+        folder = 'people'
+    else:
+        folder = 'misc'
+    server_filename = unicode(instance) + '_' + filename
+    return os.path.join('img', folder, server_filename)
 
 
 class Client(models.Model):
     name = models.CharField(verbose_name='Nom du client', max_length=50)
-    url = models.URLField(verbose_name='URL du client')
+    description = models.TextField(verbose_name='Description', max_length=500,
+                                   blank=True)
+    url = models.URLField(verbose_name='URL du client', blank=True)
+    image = models.ImageField(verbose_name='Logo', upload_to=get_image_path,
+                              blank=True)
 
     def __unicode__(self):
         return self.name
@@ -24,10 +36,10 @@ class Client(models.Model):
 
 class Project(models.Model):
     name = models.CharField(verbose_name='Nom du projet', max_length=50)
-    desc = models.TextField(verbose_name='Description', max_length=5000)
-    image = models.ImageField(verbose_name="Capture d'écran",
-                              upload_to=get_image_path)
+    description = models.TextField(verbose_name='Description', max_length=5000)
     url = models.URLField(verbose_name='URL du projet')
+    image = models.ImageField(verbose_name="Capture d'écran",
+                              upload_to=get_image_path, blank=True)
     client = models.ForeignKey('Client')
 
     def __unicode__(self):
@@ -41,37 +53,65 @@ def project_post_delete_handler(sender, **kwargs):
     storage.delete(path)
 
 
-class Techno(models.Model):
-    name = models.CharField(verbose_name='Nom de la techno', max_length=50)
-    desc = models.TextField(verbose_name='Description', max_length=500)
-    url = models.URLField(verbose_name='URL de la techno')
+class Skill(models.Model):
+    name = models.CharField(verbose_name='Nom de la compétence', max_length=50)
+    description = models.TextField(verbose_name='Description', max_length=500,
+                                   blank=True)
+    category = models.ForeignKey('Category')
 
     def __unicode__(self):
         return self.name
+
+
+class Person(models.Model):
+    firstname = models.CharField(verbose_name='Prénom', max_length=50)
+    lastname = models.CharField(verbose_name='Nom', max_length=50)
+    nickname = models.CharField(verbose_name='Pseudonyme', max_length=50,
+                                blank=True)
+    email = models.EmailField(verbose_name='Email')
+    url = models.URLField(verbose_name='Site perso', blank=True)
+    image = models.ImageField(verbose_name='Photo', upload_to=get_image_path,
+                              blank=True)
+
+    def __unicode__(self):
+        if self.nickname:
+            return self.nickname
+        else:
+            return self.firstname + ' ' + self.lastname
 
 
 class Message(models.Model):
-    name = models.CharField(verbose_name='Nom du contact', max_length=50)
-    email = models.EmailField(verbose_name='Email du contact')
+    sender = models.EmailField(verbose_name='Email du contact')
+    subject = models.CharField(verbose_name='Sujet', max_length=50)
     message = models.TextField(verbose_name='Message', max_length=500)
-    read = models.BooleanField(verbose_name='Lu', default=False)
+    isread = models.BooleanField(verbose_name='Lu', default=False)
+    person = models.ForeignKey('Person')
 
     def __unicode__(self):
-        return self.name
+        return 'from ' + unicode(self.sender) + ': ' + unicode(self.subject)
 
 
-class CompetenceCategory(models.Model):
+class Category(models.Model):
     name = models.CharField(verbose_name='Nom de la catégorie', max_length=50)
+    description = models.TextField(verbose_name='Description', max_length=500,
+                                   blank=True)
 
     def __unicode__(self):
         return self.name
 
 
-class Competence(models.Model):
-    name = models.CharField(verbose_name='Nom de la compétence', max_length=50)
-    desc = models.TextField(verbose_name='Descriptif', max_length=500)
+class Skillset(models.Model):
     level = models.SmallIntegerField(verbose_name='Niveau de maîtrise')
-    category = models.ForeignKey('CompetenceCategory')
+    skill = models.ForeignKey('Skill')
+    person = models.ForeignKey('Person')
 
     def __unicode__(self):
-        return self.name
+        return unicode(self.person) + ': ' + self.skill.name
+
+
+class UsedSkill(models.Model):
+    skillset = models.ForeignKey('Skillset')
+    project = models.ForeignKey('Project')
+
+    def __unicode__(self):
+        return self.project.name + ': ' + unicode(self.skillset)

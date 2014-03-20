@@ -1,28 +1,44 @@
 {% extends "website/base.html" %}
 {% load static %}
+{% block localscripts %}
+    <script>
+        $(document).ready(function () {
+            $('.hideme').hide();
+            $(".realisation").mouseenter(function () {
+                $(this).find(".hideme").stop().slideDown(500);
+            }).mouseleave(function() {
+                $(this).find(".hideme").stop().slideUp(500);
+            });
+        });
+    </script>
+{% endblock %}
 {% block content %}
 
-<h1>Réalisations passées :</h1>
-{% for line in pjlines %}
-<div class="row">
-	{% for project in line %}
-	<div class="realisation col-xs-12 col-sm-6 col-md-3">
-		<table>
-			<thead><tr><th>Pour <a href="{{ project.client.url }}">{{ project.client.name }}</a></th></tr></thead>
-			<tbody>
-				<tr><td><img class="screenshot_realisation" src="{% static 'screenshots/2_blank_screenshot.png' %}" alt="{{ project.name }}"/></td></tr>
-				<tr><td><strong>{{ project.name }}</strong></td></tr>
-				<tr><td>{% autoescape off %}{{ project.desc }}{% endautoescape %}</td></tr>
-			</tbody>
-			<tfoot>
-			<tr><td></td></tr>
-			</tfoot>
-
-		</table>
-	</div>
-	{% endfor %}
-</div>
-{% endfor %}
-
-<br/>
+    {% for line in pjlines %}
+        <div class="row">
+            {% for project in line %}
+                <div class="realisation col-xs-12 col-sm-6 col-md-3">
+                    <h3><a href="{{ project.url }}">{{ project.name }}</a></h3>
+                    <img class="screenshot_realisation img-thumbnail"
+                         src="/media/{{ project.image }}"
+                         alt="{{ project.name }}"
+                         title="Capture d'écran"/>
+                    <div class="hideme">
+                        Client :<strong><a
+                            href="{{ project.client.url }}">{{ project.client.name }}</a></strong>
+                    </div>
+                    <div class="hideme">
+                        {% autoescape off %}<em>
+                            {{ project.description }}
+                            </em>{% endautoescape %}
+                    </div>
+                    <div class="hideme">
+                        {% for usedskill in project.sklist %}
+                            <a title="{{ usedskill.skillset.skill.description }}">{{ usedskill.skillset.skill.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
 {% endblock %}

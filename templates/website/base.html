@@ -26,21 +26,16 @@
         </ul>
     </div>
 </div>
-
-
 {% endblock %}
 
 {% block jumbotron %}
 <div class="container">
-    <img src="{% static 'img/wintercap_logo.png' %}"
-         class="img-responsive winterlogo" alt="Wintercap"/>
-
-    <h3>Développement d'applications web / desktop / mobile</h3>
+<h1>{{ page_title }}</h1>
 </div>
 {% endblock %}
 
 {% block footer %}
-<p>Ce site dynamique utilise <a href="https://www.djangoproject.com">django</a> et <a
+<p>Ce site dynamique utilise <a href="https://www.djangoproject.com">django</a>, <a href="http://www.jquery.com">jQuery</a> et <a
         href="http://getbootstrap.com">Bootstrap</a>.</p>
 <p>&copy; 2014 David Bonnet
 </p>
