@@ -6,7 +6,7 @@
     <script>
         $(document).ready(function () {
             $('.clickhide').click(function () {
-                $(this).hide('slow');
+                $('.clickhide').hide('slow');
             });
             $('.message').first().dialog({
                  modal: true,
@@ -42,7 +42,7 @@
                         <span class="input-group-addon"
                               style="min-width: 90px;">sujet:</span>
                         <input type="text" class="form-control"
-                               name="subject" max="50"
+                               name="subject" maxlength="50"
                                placeholder="Sujet du message"/>
                         <span class="input-group-addon clickhide"
                               style="color: red;">
@@ -76,7 +76,7 @@
 
                 <div>
                     <p>
-                        {{ person.description }}
+                        {% autoescape off %}{{ person.description }}{% endautoescape %}
                     </p>
                 </div>
                 <div>
