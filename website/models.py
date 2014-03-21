@@ -72,6 +72,8 @@ class Person(models.Model):
     url = models.URLField(verbose_name='Site perso', blank=True)
     image = models.ImageField(verbose_name='Photo', upload_to=get_image_path,
                               blank=True)
+    description = models.TextField(verbose_name='Description', max_length=500,
+                                   blank=True)
 
     def __unicode__(self):
         if self.nickname:

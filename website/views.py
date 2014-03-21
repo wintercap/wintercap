@@ -5,8 +5,11 @@ wintercap.fr website views
 from __future__ import print_function, division
 from __future__ import absolute_import, unicode_literals
 from collections import OrderedDict
+from django.contrib import messages
+from django.core.mail import send_mail
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from website.forms import MessageForm
 
 from website.models import *
 
@@ -64,6 +67,21 @@ def realisations(request):
 def contact(request):
     page_title = 'Contact'
     nav_pages = make_nav(page_title)
+    people = Person.objects.all()
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.isread = False
+            message.person = Person.objects.get(id=1)
+            message.save()
+            message_with_sender = message.sender + '\n' + message.message
+            # send_mail(message.subject, message_with_sender, message.sender,
+            #           [message.person.email], fail_silently=False)
+            messages.success(request, 'Votre message a bien été envoyé.')
+            return redirect('website.views.contact')
+    else:
+        form = MessageForm()
     return render(request, 'website/contact.html', locals())
 
 

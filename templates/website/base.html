@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block navigation %}
-    <!-- Barre de navigation -->
-
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">
@@ -28,13 +26,19 @@
         </div>
     </div>
 {% endblock %}
-
 {% block jumbotron %}
     <div class="container">
         <h1>{{ page_title }}</h1>
     </div>
 {% endblock %}
-
+{% block message-zone %}
+    {% for message in messages %}
+        <div class="message{% if message.tags %} {{ message.tags }}"{% endif %}
+                title="Information">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endblock %}
 {% block footer %}
     <p>Ce site dynamique utilise <a
             href="https://www.djangoproject.com">django</a>, <a

@@ -159,3 +159,11 @@ footer a{
     background-color: #3E4350;
     color: white;
 }
+
+
+/**
+ * Page contact
+ */
+.clickhide:hover{
+    cursor: pointer;
+}
