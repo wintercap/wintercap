@@ -76,8 +76,8 @@ def contact(request):
             message.person = Person.objects.get(id=1)
             message.save()
             message_with_sender = message.sender + '\n' + message.message
-            # send_mail(message.subject, message_with_sender, message.sender,
-            #           [message.person.email], fail_silently=False)
+            send_mail(message.subject, message_with_sender, message.sender,
+                      [message.person.email], fail_silently=False)
             messages.success(request, 'Votre message a bien été envoyé.')
             return redirect('website.views.contact')
     else:
